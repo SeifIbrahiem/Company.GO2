@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Company.GO2.DAL.Data.Contexts
 {
-    internal class CompanyDbContext : DbContext
+    public class CompanyDbContext : DbContext
     {
         public CompanyDbContext(): base()
         {
@@ -27,7 +27,7 @@ namespace Company.GO2.DAL.Data.Contexts
         {
             optionsBuilder.UseSqlServer("Server = . ; Database = CompanyGO2; Trusted_Connection = True ; TrustedServerCertificate = True ");
         }
-            public DbSet<Department> DepartmentSet { get; set; }
+        public DbSet<Department> Departments { get; set; }
         public object Assemply { get; private set; }
     }
     }
