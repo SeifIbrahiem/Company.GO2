@@ -13,9 +13,10 @@ namespace Company.GO2.BLL.Repositories
     {
         private readonly CompanyDbContext _context; //null
 
-        public DepartmentRepository()
+        //Ask CLR Create Object From CompanyDbContext
+        public DepartmentRepository(CompanyDbContext context)
         {
-            _context = new CompanyDbContext();
+            _context = context;
         }
 
 
