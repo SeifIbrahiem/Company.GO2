@@ -22,5 +22,22 @@ namespace Company.GO2.PL.Controllers
 
             return View(departments);
         }
+
+        [HttpGet]
+        public IActionResult Create() 
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
