@@ -1,4 +1,6 @@
 ﻿using Company.GO2.BLL.Repositories;
+using Company.GO2.DAL.Models;
+using Company.GO2.PL.DTOS;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Company.GO2.PL.Controllers
@@ -29,8 +31,27 @@ namespace Company.GO2.PL.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(CreateDepartmentDto model)
+        {
+            if (ModelState.IsValid) //server side validation
+            {
+                var department = new Department()
+                {
+                   Code = model.Code,
+                   Name = model.Name,
+                   CreatedDate= model.CreateAt,
+                };
+                var count = _departmentRepositry.Add(department);
+                if (count > 0) 
+                { 
+                  return RedirectToAction(nameof(Index));
+                }
+            }
 
 
+            return View();
+        }
 
 
 

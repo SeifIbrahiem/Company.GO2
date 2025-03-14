@@ -32,17 +32,18 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>item.code</td>
-                    <td>item.Name</td>
-                    <td>item.Createat</td>
+                    <td>@item.Code</td>
+                    <td>@item.Name</td>
+                    <td>@item.CreatedDate</td>
                     <td>
                         <a asp-action="Detailes" class="btn btn-warning">Deatailes</a>
+                        
                     </td>
                     <td>
-                        <a asp-action="Edit" class="btn btn-warning">Update</a>
+                        <a asp-action="Edit" class="btn btn-danger">Update</a>
                     </td>
                     <td>
-                        <a asp-action="Delete" class="btn btn-warning">Delete</a>
+                        <a asp-action="Delete" class="btn btn-dark">Delete</a>
                     </td>
                 </tr>
             }
@@ -50,10 +51,6 @@
 
 
     </table>
-
-
-
-
 
 }
 else 
