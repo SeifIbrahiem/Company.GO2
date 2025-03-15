@@ -1,3 +1,8 @@
+using Company.GO2.BLL.Repositories;
+using Company.GO2.DAL.Data.Contexts;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
+
 namespace Company.GO2.PL
 {
     public class Program
@@ -7,8 +12,11 @@ namespace Company.GO2.PL
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
-
+            builder.Services.AddControllersWithViews(); //register built in mvc services
+            builder.Services.AddScoped<DepartmentRepository>();//Allow DI for DepartmentRepository
+            builder.Services.AddDbContext<CompanyDbContext>(Option=>{
+                Option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+            }); //Allow DI for CompanyDbContext
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
